@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>JavaScript form validation - checking non-empty</title>
+    <style>
+      li {
+        list-style-type: none;
+        font-size: 16pt;
+      }
+      .mail {
+        margin: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 400px;
+        background: #d8f1f8;
+        border: 1px soild silver;
+      }
+      .mail h2 {
+        margin-left: 38px;
+      }
+      input {
+        font-size: 20pt;
+      }
+      input:focus,
+      textarea:focus {
+        background-color: lightyellow;
+      }
+      input submit {
+        font-size: 12pt;
+      }
+      .rq {
+        color: #ff0000;
+        font-size: 10pt;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mail">
+      <form name="form1" action="#" onsubmit="return cardnumber(event)">
+        <center>
+          <h3>Enter Card Type</h3>
+          <select name="credit-card-type" id="cc">
+            <option value="americanexpress">American Express</option>
+            <option value="visa">VISA</option>
+            <option value="mastercard">MasterCard</option>
+            <option value="discovercard">Discover Card</option>
+            <option value="dinerscard">Diners Club Card</option>
+          </select>
+        </center>
+        <ul>
+          <h3>Input Credit Card No.</h3>
+          <li><input type="text" name="text1" id="in" /></li>
+          <li>&nbsp;</li>
+          <li class="submit">
+            <input type="submit" name="submit" value="Submit" />
+          </li>
+          <li>&nbsp;</li>
+        </ul>
+      </form>
+
+      <center><p id="abc"></p></center>
+    </div>
+    <script>
+      function cardnumber(event) {
+        event.preventDefault();
+        var key = document.getElementById("cc").selectedOptions[0].value;
+        var input = document.getElementById("in");
+        var message;
+        switch (key) {
+          case "americanexpress":
+            message = aecardnumber(input);
+            break;
+          case "visa":
+            message = visacardnumber(input);
+            break;
+          case "mastercard":
+            message = Mcardnumber(input);
+            break;
+          case "discovercard":
+            message = Dcardnumber(input);
+            break;
+          case "dinerscard":
+            message = DCcardnumber(input);
+            break;
+          default:
+            break;
+        }
+        document.getElementById("abc").innerHTML = message;
+      }
+      function aecardnumber(inputtxt) {
+        var cardno = /^(?:3[47][0-9]{13})$/;
+        if (inputtxt.value.match(cardno)) {
+          return "valid Amercican Express credit card number!";
+        } else {
+          return "Not a valid Amercican Express credit card number!";
+        }
+      }
+      function visacardnumber(inputtxt) {
+        var cardno = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+        if (inputtxt.value.match(cardno)) {
+          return "valid Visa credit card number!";
+        } else {
+          return "Not a valid Visa credit card number!";
+        }
+      }
+      function Mcardnumber(inputtxt) {
+        var cardno = /^(?:5[1-5][0-9]{14})$/;
+        if (inputtxt.value.match(cardno)) {
+          return "valid Mastercard number!";
+        } else {
+          return "Not a valid Mastercard number!";
+        }
+      }
+      function Dcardnumber(inputtxt) {
+        var cardno = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
+        if (inputtxt.value.match(cardno)) {
+          return "valid Discover card number!";
+        } else {
+          return "Not a valid Discover card number!";
+        }
+      }
+      function DCcardnumber(inputtxt) {
+        var cardno = /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/;
+        if (inputtxt.value.match(cardno)) {
+          return "valid Dinners Club card number!";
+        } else {
+          return "Not a valid Dinners Club card number!";
+        }
+      }
+      function JCBcardnumber(inputtxt) {
+        var cardno = /^(?:(?:2131|1800|35\d{3})\d{11})$/;
+        if (inputtxt.value.match(cardno)) {
+          return "valid JCB card number!";
+        } else {
+          return "Not a valid JCB card number!";
+        }
+      }
+    </script>
+  </body>
+</html>

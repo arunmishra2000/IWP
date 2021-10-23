@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.5.min.js"></script>
+    <script>
+      let arr = {
+        A: 1,
+        B: 2,
+        C: 3,
+        D: 4,
+        E: 5,
+        F: 8,
+        G: 3,
+        H: 5,
+        I: 1,
+        J: 1,
+        K: 2,
+        L: 3,
+        M: 4,
+        N: 5,
+        O: 7,
+        P: 8,
+        Q: 1,
+        R: 2,
+        S: 3,
+        T: 4,
+        U: 6,
+        V: 6,
+        W: 6,
+        X: 5,
+        Y: 1,
+        Z: 7,
+      };
+      $("document").ready(function () {
+        $("button").click(function (e) {
+          e.preventDefault();
+          var a = $(".inputVal").val();
+          var number = 0;
+          var result;
+          for (var i = 0; i < a.length; i++) {
+            number = number + arr[a[i]];
+          }
+          if (number == 11 || number == 22 || number == 33) {
+            result = number;
+          } else {
+            let sum = 0;
+            while (number > 0 || sum > 9) {
+              sum = sum + (number % 10);
+              if (sum == 11 || sum == 22 || sum == 33) {
+                break;
+              }
+              number = Math.floor(number / 10);
+            }
+            result = sum;
+          }
+          console.log(result);
+          let message;
+          switch (result) {
+            case 1:
+              message = "You radiate with a dynamic and efficient energy.";
+              break;
+            case 2:
+              message = "You appear friendly and unpretentious.";
+              break;
+            case 3:
+              message = "You are uplifting, inspiring, and charming.";
+              break;
+            case 4:
+              message =
+                "You love the intimacy, consistency, and the securitya family provides";
+              break;
+            case 5:
+              message = "You are a stimulating person.";
+              break;
+            case 6:
+              message = "You radiate understanding and compassion";
+              break;
+            case 7:
+              message = "You seem mysterious and different.";
+              break;
+            case 8:
+              message = "You appear strong and powerful.";
+              break;
+            case 9:
+              message = "You have an impressive and aristocratic bearing";
+              break;
+            case 11:
+              message =
+                "You have worked hard to gain confidence and overcome, at least to some extent, an in-born shyness.";
+              break;
+            case 22:
+              message = "You radiate reliability and consistency.";
+              break;
+            case 33:
+              message = "You inspire confidence.";
+              break;
+            default:
+              break;
+          }
+          $("h3").html(message);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form>
+      <input type="text" class="inputVal" />
+      <button>Check</button>
+    </form>
+    <h3></h3>
+  </body>
+</html>

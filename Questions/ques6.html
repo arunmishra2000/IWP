@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function check1(arr, len) {
+        let inc = parseInt(len / 2);
+        for (var i = 0; i < inc; i++) {
+          if (arr[i] > arr[i + 1]) {
+            return 0;
+          }
+        }
+        i++;
+        for (; i < len; i++) {
+          if (arr[i] < arr[i + 1]) {
+            return 0;
+          }
+        }
+        return 1;
+      }
+      function check2(arr, len) {
+        let inc = parseInt((len - 1) / 2);
+        for (var i = 0; i < inc; i++) {
+          if (arr[i] < arr[i + 1]) {
+            return 0;
+          }
+        }
+        i++;
+        for (; i < len; i++) {
+          if (arr[i] > arr[i + 1]) {
+            return 0;
+          }
+        }
+        return 1;
+      }
+
+      var arr = prompt("Enter the array").split(",");
+      arr = arr.map(Number);
+      const len = arr.length;
+      let a;
+      if (len % 2 != 0) {
+        a = check1(arr, len);
+      } else {
+        a = check2(arr, len);
+      }
+      if (a) alert("The number is half increasing and half decreasing");
+      else {
+        alert("The number is NOT half increasing and half decreasing");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

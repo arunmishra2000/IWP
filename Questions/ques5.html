@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>Word Decoder</title>
+    <script type="text/javascript">
+      var i;
+      var check = [
+        "OESTRIN",
+        "NEGATOR",
+        "ENATION",
+        "ARENITE",
+        "INERTIA",
+        "ASSAULT",
+        "CALIBER",
+        "DEFICIT",
+        "INTERIM",
+        "TORNADE",
+      ];
+      var dis = [
+        "I S T N R E O",
+        "N A G R E O T",
+        "E T N A N I O",
+        "E A R T E I N",
+        "A E N I R T I",
+        "A S T S A U L",
+        "I B R E C A L",
+        "I E I F D T C",
+        "M I E N R T I",
+        "D T R O E N A",
+      ];
+      function generate() {
+        i = parseInt(Math.random() * (9 - 0) + 0);
+        document.getElementById("p1").innerHTML = dis[i];
+        document.getElementById("p2").innerHTML = "Hint:Hint No." + (i + 1);
+      }
+      function checks(form) {
+        var val = form.ans.value;
+        if (val.toUpperCase().localeCompare(check[i]) === 0) alert("Correct!");
+        else alert("Incorrect!");
+      }
+    </script>
+  </head>
+  <style>
+    #p1 {
+      color: red;
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    input[type="button"] {
+      background-color: rgb(13, 255, 45);
+      color: black;
+      width: 6rem;
+      height: 3rem;
+      font-size: 1rem;
+      border-radius: 3px;
+    }
+    input[type="text"] {
+      width: 20rem;
+      font-size: 1rem;
+    }
+  </style>
+  <body>
+    <h3>Word Guessing Game</h3>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <input type="button" value="Generate" onclick="generate();" />
+    <form>
+      <input type="text" name="ans" />
+      <input type="button" value="Check" onclick="checks(this.form);" />
+    </form>
+  </body>
+</html>
